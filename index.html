@@ -6,242 +6,74 @@
 <title>Viveka K — Full Stack Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #0D1B6E;
-  --navy-deep: #060D3A;
-  --navy-mid: #1A2A8F;
-  --teal: #1A9EA8;
-  --cyan: #A8EEF0;
-  --cyan-light: #C8F5F7;
-  --cyan-pale: #E4FAFB;
-  --body-bg: #EBF9FA;
-  --text-body: #1a1a2e;
-  --text-muted: #4a5480;
-  --white: #FFFFFF;
+:root{
+  --navy:#0D1B6E;--navy-deep:#060D3A;--navy-mid:#1A2A8F;
+  --teal:#1A9EA8;--cyan:#A8EEF0;--cyan-light:#C8F5F7;
+  --cyan-pale:#E4FAFB;--body-bg:#EBF9FA;
+  --text-body:#1a1a2e;--text-muted:#4a5480;--white:#FFFFFF;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Instrument Sans',sans-serif;background:var(--body-bg);color:var(--text-body);overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--cyan-pale)}::-webkit-scrollbar-thumb{background:var(--navy);border-radius:3px}
 
-/* ══════════════════════════════════════
-   NAV
-══════════════════════════════════════ */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 64px;
-  background:rgba(235,249,250,0.93);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(13,27,110,0.1);
-  transition:padding .3s;
-}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:16px 64px;background:rgba(235,249,250,.93);backdrop-filter:blur(18px);border-bottom:1px solid rgba(13,27,110,.1);transition:padding .3s}
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--navy)}
 .nav-logo span{color:var(--teal)}
 nav ul{list-style:none;display:flex;gap:32px}
 nav a{text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy-mid);transition:color .2s}
 nav a:hover{color:var(--teal)}
 
-/* ══════════════════════════════════════
-   ROAD / CAR STRIP
-   Cars face LEFT (← direction), move right→left
-══════════════════════════════════════ */
-.road-strip{
-  position:relative;height:90px;overflow:hidden;
-  background:linear-gradient(180deg,#0a0f2e 0%,#0d1545 60%,#111b55 100%);
-  flex-shrink:0;
-}
-/* sky stars */
-.road-strip::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25% 15%, rgba(255,255,255,.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 45% 25%, rgba(255,255,255,.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 65% 10%, rgba(255,255,255,.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,.5) 0%, transparent 100%),
-    radial-gradient(1px 1px at 90% 12%, rgba(255,255,255,.4) 0%, transparent 100%);
-}
-/* road surface */
-.road-surface{
-  position:absolute;bottom:0;left:0;right:0;height:42px;
-  background:linear-gradient(180deg,#1a2060 0%,#141850 100%);
-  border-top:2px solid rgba(168,238,240,.2);
-}
-/* center dashes */
-.road-dashes{
-  position:absolute;bottom:18px;left:0;right:0;height:3px;
-  background:repeating-linear-gradient(
-    90deg,
-    rgba(168,238,240,.55) 0px,
-    rgba(168,238,240,.55) 28px,
-    transparent 28px,
-    transparent 56px
-  );
-  animation:dashMove 1.2s linear infinite;
-}
+/* ROAD STRIP */
+.road-strip{position:relative;height:90px;overflow:hidden;background:linear-gradient(180deg,#0a0f2e 0%,#0d1545 60%,#111b55 100%);flex-shrink:0}
+.road-strip::before{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 30% 15%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 55% 25%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 75% 10%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 90% 18%,rgba(255,255,255,.5) 0%,transparent 100%)}
+.road-surface{position:absolute;bottom:0;left:0;right:0;height:42px;background:linear-gradient(180deg,#1a2060 0%,#141850 100%);border-top:2px solid rgba(168,238,240,.2)}
+.road-dashes{position:absolute;bottom:18px;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,rgba(168,238,240,.55) 0px,rgba(168,238,240,.55) 28px,transparent 28px,transparent 56px);animation:dashMove 1.2s linear infinite}
 @keyframes dashMove{from{transform:translateX(0)}to{transform:translateX(-56px)}}
+.road-kerb{position:absolute;bottom:0;left:0;right:0;height:5px;background:repeating-linear-gradient(90deg,rgba(168,238,240,.3) 0px,rgba(168,238,240,.3) 20px,rgba(255,255,255,.07) 20px,rgba(255,255,255,.07) 40px)}
+.car-lane{position:absolute;bottom:6px;animation:carDriveLeft var(--dur,14s) linear var(--delay,0s) infinite}
+@keyframes carDriveLeft{from{transform:translateX(calc(100vw + 160px))}to{transform:translateX(-200px)}}
 
-/* kerb stripes bottom */
-.road-kerb{
-  position:absolute;bottom:0;left:0;right:0;height:5px;
-  background:repeating-linear-gradient(
-    90deg,
-    rgba(168,238,240,.3) 0px,
-    rgba(168,238,240,.3) 20px,
-    rgba(255,255,255,.07) 20px,
-    rgba(255,255,255,.07) 40px
-  );
-}
-
-/* CAR — uses a real SVG inline car facing LEFT */
-.car-lane{
-  position:absolute;bottom:6px;
-  animation:carDriveLeft var(--dur, 14s) linear var(--delay, 0s) infinite;
-}
-/* Cars start off-screen RIGHT, move to LEFT */
-@keyframes carDriveLeft{
-  from{transform:translateX(calc(100vw + 160px))}
-  to{transform:translateX(-200px)}
-}
-
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
-#hero{
-  min-height:100vh;
-  display:grid;grid-template-columns:1.1fr .9fr;
-  align-items:center;gap:48px;
-  padding:90px 64px 60px;
-  position:relative;overflow:hidden;
-  background:var(--body-bg);
-}
-#hero::before{
-  content:'';position:absolute;right:-60px;top:50%;transform:translateY(-50%);
-  width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle,rgba(13,27,110,.07) 0%,transparent 65%);
-  pointer-events:none;
-}
-
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
-  color:var(--teal);margin-bottom:14px;
-}
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:48px;padding:90px 64px 60px;position:relative;overflow:hidden;background:var(--body-bg)}
+#hero::before{content:'';position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(13,27,110,.07) 0%,transparent 65%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
 .hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1.5px;background:var(--teal)}
-.hero-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(4rem,6.5vw,6.5rem);font-weight:700;line-height:.95;
-  color:var(--navy);white-space:nowrap;margin-bottom:10px;
-  animation:fadeUp .9s ease both;
-}
-.hero-sub{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;font-style:italic;
-  color:var(--teal);margin-bottom:20px;
-  animation:fadeUp .9s .1s ease both;
-}
-.hero-badge{
-  display:inline-block;font-family:'DM Mono',monospace;font-size:.72rem;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--navy);background:var(--cyan);padding:6px 14px;border-radius:2px;
-  margin-bottom:22px;animation:fadeUp .9s .2s ease both;
-}
-.hero-desc{
-  font-size:.97rem;line-height:1.8;color:var(--text-muted);
-  max-width:460px;margin-bottom:30px;animation:fadeUp .9s .3s ease both;
-}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,6.5vw,6.5rem);font-weight:700;line-height:.95;color:var(--navy);white-space:nowrap;margin-bottom:10px;animation:fadeUp .9s ease both}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;font-style:italic;color:var(--teal);margin-bottom:20px;animation:fadeUp .9s .1s ease both}
+.hero-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:6px 14px;border-radius:2px;margin-bottom:22px;animation:fadeUp .9s .2s ease both}
+.hero-desc{font-size:.97rem;line-height:1.8;color:var(--text-muted);max-width:460px;margin-bottom:30px;animation:fadeUp .9s .3s ease both}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px;animation:fadeUp .9s .4s ease both}
-.btn-p{
-  display:inline-flex;align-items:center;gap:7px;padding:12px 26px;
-  background:var(--navy);color:var(--cyan);border:2px solid var(--navy);
-  border-radius:3px;font-size:.84rem;font-weight:600;text-decoration:none;transition:all .25s;
-}
+.btn-p{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;background:var(--navy);color:var(--cyan);border:2px solid var(--navy);border-radius:3px;font-size:.84rem;font-weight:600;text-decoration:none;transition:all .25s}
 .btn-p:hover{background:var(--teal);border-color:var(--teal);color:#fff;transform:translateY(-2px)}
-.btn-o{
-  display:inline-flex;align-items:center;gap:7px;padding:12px 26px;
-  background:transparent;color:var(--navy);border:2px solid var(--navy);
-  border-radius:3px;font-size:.84rem;font-weight:600;text-decoration:none;transition:all .25s;
-}
+.btn-o{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;background:transparent;color:var(--navy);border:2px solid var(--navy);border-radius:3px;font-size:.84rem;font-weight:600;text-decoration:none;transition:all .25s}
 .btn-o:hover{background:var(--navy);color:var(--cyan);transform:translateY(-2px)}
 .hero-contacts{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .9s .5s ease both}
 .hero-contacts a{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text-muted);text-decoration:none;transition:color .2s}
 .hero-contacts a:hover{color:var(--teal)}
 
-/* ── HERO PHOTO — floating glow card ── */
-.hero-right{
-  display:flex;justify-content:center;align-items:center;
-  position:relative;animation:fadeUp 1s .2s ease both;
-}
-
-/* outer glow that pulses */
-.photo-glow-wrap{
-  position:relative;
-  width:320px;height:380px;
-  border-radius:24px;
-  filter:drop-shadow(0 0 32px rgba(26,158,168,.35));
-  animation:glowPulse 4s ease-in-out infinite;
-}
-@keyframes glowPulse{
-  0%,100%{filter:drop-shadow(0 0 28px rgba(26,158,168,.3))}
-  50%{filter:drop-shadow(0 0 52px rgba(26,158,168,.55))}
-}
-
-/* inner photo */
-.photo-img-wrap{
-  width:100%;height:100%;
-  border-radius:24px;overflow:hidden;
-  border:2px solid rgba(168,238,240,.5);
-  position:relative;
-}
-.photo-img-wrap img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:top center;
-  filter:contrast(1.06) saturate(1.08);
-  display:block;
-}
-
-/* shimmer sweep */
-.photo-img-wrap::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(115deg,transparent 30%,rgba(168,238,240,.12) 50%,transparent 70%);
-  animation:shimmer 3.5s ease-in-out infinite;
-}
-@keyframes shimmer{
-  0%{transform:translateX(-100%)}
-  60%,100%{transform:translateX(100%)}
-}
-
-/* floating chips */
-.chip{
-  position:absolute;
-  display:flex;align-items:center;gap:7px;
-  background:var(--navy);color:var(--cyan);
-  font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:1px;
-  padding:9px 16px;border-radius:30px;
-  box-shadow:0 8px 24px rgba(8,15,69,.45);
-  white-space:nowrap;
-  animation:chipFloat var(--cf,5s) ease-in-out infinite;
-}
+/* PHOTO */
+.hero-right{display:flex;justify-content:center;align-items:center;position:relative;animation:fadeUp 1s .2s ease both}
+.photo-glow-wrap{position:relative;width:320px;height:380px;border-radius:24px;filter:drop-shadow(0 0 32px rgba(26,158,168,.35));animation:glowPulse 4s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{filter:drop-shadow(0 0 28px rgba(26,158,168,.3))}50%{filter:drop-shadow(0 0 52px rgba(26,158,168,.55))}}
+.photo-img-wrap{width:100%;height:100%;border-radius:24px;overflow:hidden;border:2px solid rgba(168,238,240,.5);position:relative}
+.photo-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:contrast(1.06) saturate(1.08);display:block}
+.photo-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(168,238,240,.12) 50%,transparent 70%);animation:shimmer 3.5s ease-in-out infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.chip{position:absolute;display:flex;align-items:center;gap:7px;background:var(--navy);color:var(--cyan);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:1px;padding:9px 16px;border-radius:30px;box-shadow:0 8px 24px rgba(8,15,69,.45);white-space:nowrap;animation:chipFloat var(--cf,5s) ease-in-out infinite}
 .chip.light{background:var(--cyan);color:var(--navy)}
-.chip-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:blink 1.5s ease-in-out infinite}
 @keyframes chipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══════════════════════════════════════
-   TICKER
-══════════════════════════════════════ */
+/* TICKER */
 .ticker{background:var(--navy);padding:13px 0;overflow:hidden}
 .ticker-inner{display:flex;gap:52px;align-items:center;animation:tick 22s linear infinite;white-space:nowrap}
 .ti{color:rgba(168,238,240,.75);font-family:'DM Mono',monospace;font-size:.77rem;letter-spacing:1px}
 .ts{color:var(--cyan);margin-left:12px;font-size:.55rem}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ══════════════════════════════════════
-   SECTION UTILS
-══════════════════════════════════════ */
+/* UTILS */
 .eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:'';display:inline-block;width:20px;height:1.5px;background:currentColor}
 .eyebrow.inv{color:var(--cyan-light)}
@@ -250,9 +82,7 @@ nav a:hover{color:var(--teal)}
 .sec-h.inv{color:var(--cyan-light)}
 .sec-h.inv em{color:var(--cyan)}
 
-/* ══════════════════════════════════════
-   ABOUT
-══════════════════════════════════════ */
+/* ABOUT */
 #about{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start;padding:68px 64px;background:var(--white)}
 .about-body p{font-size:.97rem;line-height:1.85;color:var(--text-muted);margin-bottom:16px}
 .edu-card{background:var(--cyan-pale);border-radius:10px;padding:20px 22px;border:1.5px solid rgba(13,27,110,.1);margin-bottom:12px}
@@ -261,9 +91,7 @@ nav a:hover{color:var(--teal)}
 .edu-sub{font-size:.83rem;color:var(--text-muted)}
 .edu-date{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--teal);margin-top:5px;letter-spacing:1px}
 
-/* ══════════════════════════════════════
-   SKILLS
-══════════════════════════════════════ */
+/* SKILLS */
 #skills{padding:60px 64px;background:var(--navy)}
 .skills-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .sk-block{border:1px solid rgba(168,238,240,.18);border-radius:8px;padding:18px;background:rgba(168,238,240,.04);transition:background .25s,border-color .25s}
@@ -272,9 +100,7 @@ nav a:hover{color:var(--teal)}
 .sk-pills{display:flex;flex-wrap:wrap;gap:6px}
 .sk-pill{background:rgba(168,238,240,.1);color:rgba(255,255,255,.78);padding:3px 11px;border-radius:20px;font-size:.76rem;font-weight:500;border:1px solid rgba(168,238,240,.14)}
 
-/* ══════════════════════════════════════
-   EXPERIENCE
-══════════════════════════════════════ */
+/* EXPERIENCE */
 #experience{padding:68px 64px;background:var(--cyan-pale)}
 .exp-card{background:var(--white);border:2px solid var(--navy);border-radius:12px;padding:40px 48px;box-shadow:8px 8px 0 var(--navy);transition:transform .25s,box-shadow .25s}
 .exp-card:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--navy)}
@@ -286,17 +112,41 @@ nav a:hover{color:var(--teal)}
 .exp-ul li{padding:8px 0;padding-left:16px;position:relative;font-size:.9rem;line-height:1.65;color:var(--text-muted);border-bottom:1px solid rgba(13,27,110,.06)}
 .exp-ul li::before{content:'▸';position:absolute;left:0;top:10px;color:var(--teal);font-size:.62rem}
 
-/* ══════════════════════════════════════
-   PROJECTS — UNIFORM 2×2 GRID
-══════════════════════════════════════ */
-#projects{padding:68px 64px;background:var(--navy)}
-.proj-grid{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:24px;
+/* ═══════════════════════════════════════════
+   PROJECTS — HORIZONTAL CAROUSEL
+═══════════════════════════════════════════ */
+#projects{padding:56px 0 56px;background:var(--navy);overflow:hidden}
+.proj-section-header{padding:0 64px;margin-bottom:32px}
+
+/* the track */
+.proj-track-outer{
+  position:relative;
+  /* fade edges */
 }
+.proj-track-outer::before,
+.proj-track-outer::after{
+  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
+}
+.proj-track-outer::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.proj-track-outer::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+
+.proj-track{
+  display:flex;
+  gap:24px;
+  padding:12px 80px 20px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  cursor:grab;
+  transition:transform .4s ease;
+}
+.proj-track:active{cursor:grabbing}
+.proj-track::-webkit-scrollbar{display:none}
 
 .pcard{
+  flex:0 0 400px; /* fixed width per card */
+  scroll-snap-align:start;
   background:rgba(168,238,240,.05);
   border:1px solid rgba(168,238,240,.15);
   border-radius:14px;overflow:hidden;
@@ -311,12 +161,11 @@ nav a:hover{color:var(--teal)}
   box-shadow:0 28px 56px rgba(0,0,0,.35);
 }
 
-/* screenshot area */
+/* screenshot tall */
 .pthumb{
   position:relative;width:100%;
-  height:220px;overflow:hidden;
-  background:#0a1340;
-  flex-shrink:0;
+  height:260px; /* taller */
+  overflow:hidden;background:#0a1340;flex-shrink:0;
 }
 .pthumb img{
   width:100%;height:100%;
@@ -325,32 +174,9 @@ nav a:hover{color:var(--teal)}
   transition:transform .6s cubic-bezier(.25,.8,.25,1);
   filter:brightness(.88) saturate(1.1);
 }
-.pcard:hover .pthumb img{transform:scale(1.07)}
-
-/* overlay gradient on thumb */
-.pthumb::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom, transparent 50%, rgba(8,15,69,.7) 100%);
-  pointer-events:none;
-}
-
-.pyear{
-  position:absolute;top:12px;right:14px;z-index:1;
-  font-family:'DM Mono',monospace;font-size:.62rem;color:rgba(168,238,240,.85);
-  letter-spacing:1.5px;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:20px;
-}
-/* live badge on thumb */
-.plive-badge{
-  position:absolute;bottom:12px;left:14px;z-index:1;
-  display:flex;align-items:center;gap:5px;
-  background:rgba(26,158,168,.85);
-  color:#fff;font-size:.65rem;font-weight:600;
-  padding:4px 10px;border-radius:20px;
-  font-family:'DM Mono',monospace;letter-spacing:.5px;
-  opacity:0;transition:opacity .3s;
-}
-.plive-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#4ade80}
-.pcard:hover .plive-badge{opacity:1}
+.pcard:hover .pthumb img{transform:scale(1.06)}
+.pthumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(8,15,69,.65) 100%);pointer-events:none}
+.pyear{position:absolute;top:12px;right:14px;z-index:1;font-family:'DM Mono',monospace;font-size:.62rem;color:rgba(168,238,240,.85);letter-spacing:1.5px;background:rgba(0,0,0,.45);padding:3px 10px;border-radius:20px}
 
 .pbody{padding:22px 24px;flex:1;display:flex;flex-direction:column}
 .ptag{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:7px}
@@ -365,9 +191,32 @@ nav a:hover{color:var(--teal)}
 .pbtn-code{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12)}
 .pbtn-code:hover{background:rgba(255,255,255,.14);color:#fff}
 
-/* ══════════════════════════════════════
-   CERTIFICATIONS
-══════════════════════════════════════ */
+/* carousel nav dots */
+.proj-dots{
+  display:flex;justify-content:center;gap:10px;margin-top:24px;padding:0 64px;
+}
+.proj-dot{
+  width:28px;height:4px;border-radius:2px;
+  background:rgba(168,238,240,.2);
+  cursor:pointer;transition:all .3s;border:none;padding:0;
+}
+.proj-dot.active{background:var(--teal);width:44px}
+
+/* arrow buttons */
+.proj-arrows{
+  display:flex;justify-content:center;gap:12px;margin-top:16px;
+}
+.proj-arrow{
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid rgba(168,238,240,.3);
+  background:rgba(168,238,240,.05);
+  color:var(--cyan);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all .2s;font-size:1rem;
+}
+.proj-arrow:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* CERTIFICATIONS */
 #certifications{padding:68px 64px;background:var(--cyan)}
 #certifications .eyebrow{color:var(--navy-mid)}
 #certifications .eyebrow::before{background:var(--navy-mid)}
@@ -387,9 +236,7 @@ nav a:hover{color:var(--teal)}
 .aemoji{font-size:1.2rem}
 .atext{font-size:.8rem;color:rgba(168,238,240,.85);line-height:1.4}
 
-/* ══════════════════════════════════════
-   CONTACT
-══════════════════════════════════════ */
+/* CONTACT */
 #contact{padding:68px 64px 48px;background:var(--navy-deep);color:var(--white);text-align:center}
 #contact .eyebrow{justify-content:center;color:var(--cyan-light)}
 #contact .eyebrow::before{background:var(--cyan-light)}
@@ -402,15 +249,11 @@ nav a:hover{color:var(--teal)}
 .c-lnk svg{width:14px;height:14px}
 .footer{padding-top:32px;border-top:1px solid rgba(255,255,255,.08);font-family:'DM Mono',monospace;font-size:.7rem;color:rgba(255,255,255,.26);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 
-/* ══════════════════════════════════════
-   SCROLL REVEAL
-══════════════════════════════════════ */
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-/* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
+/* RESPONSIVE */
 @media(max-width:960px){
   nav{padding:14px 20px}nav ul{gap:16px}
   #hero{grid-template-columns:1fr;padding:90px 20px 48px;text-align:center;gap:28px}
@@ -418,10 +261,11 @@ nav a:hover{color:var(--teal)}
   .hero-cta,.hero-contacts{justify-content:center}
   #about{grid-template-columns:1fr;padding:48px 20px;gap:28px}
   #skills,#experience,#certifications,#contact{padding:52px 20px}
-  #projects{padding:52px 20px}
+  .proj-section-header{padding:0 20px}
+  .proj-track{padding:12px 20px 20px}
+  .pcard{flex:0 0 300px}
   .skills-cols{grid-template-columns:1fr 1fr}
   .exp-ul{grid-template-columns:1fr}
-  .proj-grid{grid-template-columns:1fr}
   .certs-grid,.ach-grid{grid-template-columns:1fr 1fr}
   .footer{justify-content:center;text-align:center}
   .photo-glow-wrap{width:260px;height:310px}
@@ -430,7 +274,6 @@ nav a:hover{color:var(--teal)}
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="main-nav">
   <div class="nav-logo">Viveka <span>K</span></div>
   <ul>
@@ -442,22 +285,20 @@ nav a:hover{color:var(--teal)}
   </ul>
 </nav>
 
-<!-- ══ HERO ══ -->
+<!-- HERO -->
 <section id="hero">
   <div>
-    <div class="hero-eyebrow">Open to opportunities</div>
+    <div class="hero-eyebrow">Full Stack Developer</div>
     <div class="hero-name">Viveka K</div>
-    <div class="hero-sub">Full Stack Developer</div>
-    <div class="hero-badge">MERN Stack Specialist</div>
+    <div class="hero-sub">MERN Specialist</div>
+    <div class="hero-badge">MongoDB · Express · React · Node</div>
     <p class="hero-desc">Building scalable, user-friendly web applications with clean code and great user experience — from MongoDB to React, end to end.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn-p">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        View Work
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>View Work
       </a>
       <a href="https://github.com/Viveka31" target="_blank" class="btn-o">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub
       </a>
     </div>
     <div class="hero-contacts">
@@ -475,18 +316,12 @@ nav a:hover{color:var(--teal)}
       </a>
     </div>
   </div>
-
-  <!-- Hero photo with glow + shimmer + floating chips -->
   <div class="hero-right">
     <div class="photo-glow-wrap">
       <div class="photo-img-wrap">
-        <img src="heropic.png" alt="Viveka K"
+        <img src="portfolio_pic.png" alt="Viveka K"
           onerror="this.style.display='none';this.parentElement.style.cssText+='display:flex;align-items:center;justify-content:center;font-size:6rem;background:linear-gradient(135deg,rgba(168,238,240,.2),rgba(13,27,110,.15))';this.parentElement.insertAdjacentHTML('beforeend','<span>👩‍💻</span>')">
       </div>
-    </div>
-    <!-- floating chips around photo -->
-    <div class="chip" style="bottom:-18px;left:50%;transform:translateX(-50%);--cf:4s">
-      <span class="chip-dot"></span>Available for hire
     </div>
     <div class="chip light" style="top:28px;right:-28px;--cf:5.5s">MERN ✦</div>
     <div class="chip" style="top:110px;left:-44px;--cf:6.5s;font-size:.63rem">Chennai 🌿</div>
@@ -496,111 +331,22 @@ nav a:hover{color:var(--teal)}
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ti">React.js<span class="ts">✦</span></span>
-    <span class="ti">Node.js<span class="ts">✦</span></span>
-    <span class="ti">Express.js<span class="ts">✦</span></span>
-    <span class="ti">MongoDB<span class="ts">✦</span></span>
-    <span class="ti">MySQL<span class="ts">✦</span></span>
-    <span class="ti">Tailwind CSS<span class="ts">✦</span></span>
-    <span class="ti">REST APIs<span class="ts">✦</span></span>
-    <span class="ti">JavaScript<span class="ts">✦</span></span>
-    <span class="ti">Python<span class="ts">✦</span></span>
-    <span class="ti">Git · GitHub<span class="ts">✦</span></span>
-    <span class="ti">Vercel · Netlify<span class="ts">✦</span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="ti">React.js<span class="ts">✦</span></span>
-    <span class="ti">Node.js<span class="ts">✦</span></span>
-    <span class="ti">Express.js<span class="ts">✦</span></span>
-    <span class="ti">MongoDB<span class="ts">✦</span></span>
-    <span class="ti">MySQL<span class="ts">✦</span></span>
-    <span class="ti">Tailwind CSS<span class="ts">✦</span></span>
-    <span class="ti">REST APIs<span class="ts">✦</span></span>
-    <span class="ti">JavaScript<span class="ts">✦</span></span>
-    <span class="ti">Python<span class="ts">✦</span></span>
-    <span class="ti">Git · GitHub<span class="ts">✦</span></span>
-    <span class="ti">Vercel · Netlify<span class="ts">✦</span></span>
+    <span class="ti">React.js<span class="ts">✦</span></span><span class="ti">Node.js<span class="ts">✦</span></span><span class="ti">Express.js<span class="ts">✦</span></span><span class="ti">MongoDB<span class="ts">✦</span></span><span class="ti">MySQL<span class="ts">✦</span></span><span class="ti">Tailwind CSS<span class="ts">✦</span></span><span class="ti">REST APIs<span class="ts">✦</span></span><span class="ti">JavaScript<span class="ts">✦</span></span><span class="ti">Python<span class="ts">✦</span></span><span class="ti">Git · GitHub<span class="ts">✦</span></span><span class="ti">Vercel · Netlify<span class="ts">✦</span></span>
+    <span class="ti">React.js<span class="ts">✦</span></span><span class="ti">Node.js<span class="ts">✦</span></span><span class="ti">Express.js<span class="ts">✦</span></span><span class="ti">MongoDB<span class="ts">✦</span></span><span class="ti">MySQL<span class="ts">✦</span></span><span class="ti">Tailwind CSS<span class="ts">✦</span></span><span class="ti">REST APIs<span class="ts">✦</span></span><span class="ti">JavaScript<span class="ts">✦</span></span><span class="ti">Python<span class="ts">✦</span></span><span class="ti">Git · GitHub<span class="ts">✦</span></span><span class="ti">Vercel · Netlify<span class="ts">✦</span></span>
   </div>
 </div>
 
-<!-- ══ ROAD STRIP 1 ══ -->
-<!-- SVG cars face LEFT, move from right → left -->
+<!-- ROAD 1 -->
 <div class="road-strip">
-  <div class="road-surface"></div>
-  <div class="road-dashes"></div>
-  <div class="road-kerb"></div>
-
-  <!-- Car 1 — red sedan, fast lane -->
+  <div class="road-surface"></div><div class="road-dashes"></div><div class="road-kerb"></div>
   <div class="car-lane" style="--dur:9s;--delay:0s;bottom:10px">
-    <svg width="110" height="52" viewBox="0 0 110 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- body -->
-      <rect x="8" y="26" width="94" height="20" rx="5" fill="#C0392B"/>
-      <!-- cabin -->
-      <path d="M28 26 C32 14 46 10 64 10 C78 10 88 16 92 26Z" fill="#E74C3C"/>
-      <!-- windshield -->
-      <path d="M34 25 C37 17 50 13 64 13 C76 13 84 18 87 25Z" fill="rgba(168,238,240,0.7)"/>
-      <!-- left headlights (front facing LEFT) -->
-      <ellipse cx="12" cy="34" rx="5" ry="4" fill="#F39C12"/>
-      <ellipse cx="12" cy="34" rx="3" ry="2.5" fill="#FFF3C0"/>
-      <!-- taillights right -->
-      <rect x="96" y="30" width="7" height="7" rx="2" fill="#E74C3C"/>
-      <!-- wheels -->
-      <circle cx="30" cy="46" r="7" fill="#2C3E50"/>
-      <circle cx="30" cy="46" r="3.5" fill="#95A5A6"/>
-      <circle cx="80" cy="46" r="7" fill="#2C3E50"/>
-      <circle cx="80" cy="46" r="3.5" fill="#95A5A6"/>
-      <!-- door line -->
-      <line x1="55" y1="28" x2="55" y2="44" stroke="rgba(0,0,0,.2)" stroke-width="1.5"/>
-      <!-- door handle -->
-      <rect x="42" y="35" width="8" height="2.5" rx="1.2" fill="rgba(255,255,255,.35)"/>
-      <rect x="62" y="35" width="8" height="2.5" rx="1.2" fill="rgba(255,255,255,.35)"/>
-    </svg>
+    <svg width="110" height="52" viewBox="0 0 110 52" fill="none"><rect x="8" y="26" width="94" height="20" rx="5" fill="#C0392B"/><path d="M28 26 C32 14 46 10 64 10 C78 10 88 16 92 26Z" fill="#E74C3C"/><path d="M34 25 C37 17 50 13 64 13 C76 13 84 18 87 25Z" fill="rgba(168,238,240,0.7)"/><ellipse cx="12" cy="34" rx="5" ry="4" fill="#F39C12"/><ellipse cx="12" cy="34" rx="3" ry="2.5" fill="#FFF3C0"/><rect x="96" y="30" width="7" height="7" rx="2" fill="#E74C3C"/><circle cx="30" cy="46" r="7" fill="#2C3E50"/><circle cx="30" cy="46" r="3.5" fill="#95A5A6"/><circle cx="80" cy="46" r="7" fill="#2C3E50"/><circle cx="80" cy="46" r="3.5" fill="#95A5A6"/><line x1="55" y1="28" x2="55" y2="44" stroke="rgba(0,0,0,.2)" stroke-width="1.5"/></svg>
   </div>
-
-  <!-- Car 2 — blue SUV, slower -->
   <div class="car-lane" style="--dur:13s;--delay:3s;bottom:8px">
-    <svg width="124" height="56" viewBox="0 0 124 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- body -->
-      <rect x="6" y="28" width="112" height="22" rx="5" fill="#2980B9"/>
-      <!-- cabin tall SUV -->
-      <path d="M22 28 C26 12 42 8 72 8 C96 8 108 16 110 28Z" fill="#3498DB"/>
-      <!-- windows -->
-      <rect x="28" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/>
-      <rect x="54" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/>
-      <rect x="80" y="13" width="20" height="13" rx="3" fill="rgba(168,238,240,0.55)"/>
-      <!-- headlights LEFT facing -->
-      <ellipse cx="10" cy="37" rx="5" ry="4" fill="#F39C12"/>
-      <ellipse cx="10" cy="37" rx="3" ry="2.5" fill="#FFFDE7"/>
-      <!-- taillights right -->
-      <rect x="109" y="32" width="8" height="8" rx="2" fill="#C0392B"/>
-      <!-- wheels -->
-      <circle cx="32" cy="50" r="8" fill="#1A252F"/>
-      <circle cx="32" cy="50" r="4" fill="#7F8C8D"/>
-      <circle cx="90" cy="50" r="8" fill="#1A252F"/>
-      <circle cx="90" cy="50" r="4" fill="#7F8C8D"/>
-      <!-- roof rack -->
-      <rect x="30" y="7" width="60" height="3" rx="1.5" fill="#1A6FA8"/>
-    </svg>
+    <svg width="124" height="56" viewBox="0 0 124 56" fill="none"><rect x="6" y="28" width="112" height="22" rx="5" fill="#2980B9"/><path d="M22 28 C26 12 42 8 72 8 C96 8 108 16 110 28Z" fill="#3498DB"/><rect x="28" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/><rect x="54" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/><rect x="80" y="13" width="20" height="13" rx="3" fill="rgba(168,238,240,0.55)"/><ellipse cx="10" cy="37" rx="5" ry="4" fill="#F39C12"/><ellipse cx="10" cy="37" rx="3" ry="2.5" fill="#FFFDE7"/><rect x="109" y="32" width="8" height="8" rx="2" fill="#C0392B"/><circle cx="32" cy="50" r="8" fill="#1A252F"/><circle cx="32" cy="50" r="4" fill="#7F8C8D"/><circle cx="90" cy="50" r="8" fill="#1A252F"/><circle cx="90" cy="50" r="4" fill="#7F8C8D"/><rect x="30" y="7" width="60" height="3" rx="1.5" fill="#1A6FA8"/></svg>
   </div>
-
-  <!-- Car 3 — yellow sports car, fastest -->
   <div class="car-lane" style="--dur:7s;--delay:5s;bottom:12px">
-    <svg width="100" height="46" viewBox="0 0 100 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- body low sleek -->
-      <rect x="6" y="26" width="88" height="16" rx="4" fill="#F39C12"/>
-      <!-- cabin sporty low -->
-      <path d="M26 26 C30 16 42 12 58 12 C70 12 80 17 82 26Z" fill="#F1C40F"/>
-      <!-- windshield -->
-      <path d="M30 25 C33 18 44 14 58 14 C69 14 77 18 80 25Z" fill="rgba(168,238,240,0.65)"/>
-      <!-- headlights slim LEFT -->
-      <rect x="6" y="30" width="9" height="4" rx="2" fill="#FFF9C4"/>
-      <!-- taillights right -->
-      <rect x="86" y="28" width="8" height="5" rx="2" fill="#E74C3C"/>
-      <!-- wheels -->
-      <circle cx="26" cy="42" r="6.5" fill="#2C3E50"/>
-      <circle cx="26" cy="42" r="3" fill="#BDC3C7"/>
-      <circle cx="74" cy="42" r="6.5" fill="#2C3E50"/>
-      <circle cx="74" cy="42" r="3" fill="#BDC3C7"/>
-    </svg>
+    <svg width="100" height="46" viewBox="0 0 100 46" fill="none"><rect x="6" y="26" width="88" height="16" rx="4" fill="#F39C12"/><path d="M26 26 C30 16 42 12 58 12 C70 12 80 17 82 26Z" fill="#F1C40F"/><path d="M30 25 C33 18 44 14 58 14 C69 14 77 18 80 25Z" fill="rgba(168,238,240,0.65)"/><rect x="6" y="30" width="9" height="4" rx="2" fill="#FFF9C4"/><rect x="86" y="28" width="8" height="5" rx="2" fill="#E74C3C"/><circle cx="26" cy="42" r="6.5" fill="#2C3E50"/><circle cx="26" cy="42" r="3" fill="#BDC3C7"/><circle cx="74" cy="42" r="6.5" fill="#2C3E50"/><circle cx="74" cy="42" r="3" fill="#BDC3C7"/></svg>
   </div>
 </div>
 
@@ -631,69 +377,24 @@ nav a:hover{color:var(--teal)}
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="eyebrow inv reveal">Technical Skills</div>
-  <h2 class="sec-h inv reveal" style="margin-bottom:24px">What I <em>work with</em></h2>
-  <div class="skills-cols reveal">
-    <div class="sk-block">
-      <div class="sk-title">Frontend</div>
-      <div class="sk-pills"><span class="sk-pill">React.js</span><span class="sk-pill">HTML5</span><span class="sk-pill">CSS3</span><span class="sk-pill">Tailwind</span><span class="sk-pill">jQuery</span></div>
-    </div>
-    <div class="sk-block">
-      <div class="sk-title">Backend</div>
-      <div class="sk-pills"><span class="sk-pill">Node.js</span><span class="sk-pill">Express.js</span><span class="sk-pill">REST APIs</span></div>
-    </div>
-    <div class="sk-block">
-      <div class="sk-title">Database</div>
-      <div class="sk-pills"><span class="sk-pill">MongoDB</span><span class="sk-pill">MySQL</span><span class="sk-pill">SQL</span></div>
-    </div>
-    <div class="sk-block">
-      <div class="sk-title">Tools & Languages</div>
-      <div class="sk-pills"><span class="sk-pill">JavaScript</span><span class="sk-pill">Python</span><span class="sk-pill">Java</span><span class="sk-pill">C++</span><span class="sk-pill">Git</span><span class="sk-pill">Postman</span><span class="sk-pill">Vercel</span><span class="sk-pill">Netlify</span></div>
-    </div>
+  <div style="padding:0 64px">
+    <div class="eyebrow inv reveal">Technical Skills</div>
+    <h2 class="sec-h inv reveal" style="margin-bottom:24px">What I <em>work with</em></h2>
+  </div>
+  <div style="padding:0 64px" class="skills-cols reveal">
+    <div class="sk-block"><div class="sk-title">Frontend</div><div class="sk-pills"><span class="sk-pill">React.js</span><span class="sk-pill">HTML5</span><span class="sk-pill">CSS3</span><span class="sk-pill">Tailwind</span><span class="sk-pill">jQuery</span></div></div>
+    <div class="sk-block"><div class="sk-title">Backend</div><div class="sk-pills"><span class="sk-pill">Node.js</span><span class="sk-pill">Express.js</span><span class="sk-pill">REST APIs</span></div></div>
+    <div class="sk-block"><div class="sk-title">Database</div><div class="sk-pills"><span class="sk-pill">MongoDB</span><span class="sk-pill">MySQL</span><span class="sk-pill">SQL</span></div></div>
+    <div class="sk-block"><div class="sk-title">Tools & Languages</div><div class="sk-pills"><span class="sk-pill">JavaScript</span><span class="sk-pill">Python</span><span class="sk-pill">Java</span><span class="sk-pill">C++</span><span class="sk-pill">Git</span><span class="sk-pill">Postman</span><span class="sk-pill">Vercel</span><span class="sk-pill">Netlify</span></div></div>
   </div>
 </section>
 
-<!-- ══ ROAD STRIP 2 ══ -->
+<!-- ROAD 2 -->
 <div class="road-strip">
-  <div class="road-surface"></div>
-  <div class="road-dashes"></div>
-  <div class="road-kerb"></div>
-  <div class="car-lane" style="--dur:11s;--delay:1s;bottom:9px">
-    <svg width="116" height="54" viewBox="0 0 116 54" fill="none">
-      <rect x="7" y="28" width="102" height="20" rx="5" fill="#8E44AD"/>
-      <path d="M24 28 C28 14 44 9 68 9 C88 9 102 16 106 28Z" fill="#9B59B6"/>
-      <path d="M30 27 C34 18 48 13 68 13 C85 13 97 18 102 27Z" fill="rgba(168,238,240,0.65)"/>
-      <ellipse cx="11" cy="36" rx="5" ry="4" fill="#F39C12"/><ellipse cx="11" cy="36" rx="3" ry="2.5" fill="#FFFDE7"/>
-      <rect x="103" y="31" width="7" height="7" rx="2" fill="#C0392B"/>
-      <circle cx="32" cy="48" r="7.5" fill="#17202A"/><circle cx="32" cy="48" r="3.5" fill="#7F8C8D"/>
-      <circle cx="84" cy="48" r="7.5" fill="#17202A"/><circle cx="84" cy="48" r="3.5" fill="#7F8C8D"/>
-      <line x1="60" y1="30" x2="60" y2="46" stroke="rgba(0,0,0,.2)" stroke-width="1.5"/>
-    </svg>
-  </div>
-  <div class="car-lane" style="--dur:8s;--delay:0s;bottom:11px">
-    <svg width="96" height="44" viewBox="0 0 96 44" fill="none">
-      <rect x="5" y="24" width="86" height="16" rx="4" fill="#27AE60"/>
-      <path d="M22 24 C26 14 38 10 54 10 C68 10 78 14 80 24Z" fill="#2ECC71"/>
-      <path d="M26 23 C29 16 40 12 54 12 C66 12 75 16 77 23Z" fill="rgba(168,238,240,0.6)"/>
-      <rect x="5" y="28" width="8" height="4" rx="2" fill="#FFF9C4"/>
-      <rect x="83" y="27" width="7" height="5" rx="2" fill="#E74C3C"/>
-      <circle cx="24" cy="40" r="6" fill="#1A252F"/><circle cx="24" cy="40" r="2.8" fill="#AAB7B8"/>
-      <circle cx="72" cy="40" r="6" fill="#1A252F"/><circle cx="72" cy="40" r="2.8" fill="#AAB7B8"/>
-    </svg>
-  </div>
-  <div class="car-lane" style="--dur:15s;--delay:6s;bottom:8px">
-    <svg width="130" height="58" viewBox="0 0 130 58" fill="none">
-      <rect x="8" y="30" width="114" height="22" rx="6" fill="#E67E22"/>
-      <path d="M26 30 C30 14 46 9 76 9 C100 9 114 17 118 30Z" fill="#E8943A"/>
-      <rect x="32" y="14" width="24" height="13" rx="3" fill="rgba(168,238,240,0.7)"/>
-      <rect x="60" y="14" width="24" height="13" rx="3" fill="rgba(168,238,240,0.7)"/>
-      <rect x="88" y="14" width="20" height="13" rx="3" fill="rgba(168,238,240,0.55)"/>
-      <ellipse cx="12" cy="40" rx="5" ry="4" fill="#F1C40F"/><ellipse cx="12" cy="40" rx="3" ry="2.5" fill="#FFFFF0"/>
-      <rect x="115" y="34" width="8" height="9" rx="2" fill="#C0392B"/>
-      <circle cx="36" cy="52" r="8" fill="#1A252F"/><circle cx="36" cy="52" r="4" fill="#7F8C8D"/>
-      <circle cx="96" cy="52" r="8" fill="#1A252F"/><circle cx="96" cy="52" r="4" fill="#7F8C8D"/>
-    </svg>
-  </div>
+  <div class="road-surface"></div><div class="road-dashes"></div><div class="road-kerb"></div>
+  <div class="car-lane" style="--dur:11s;--delay:1s;bottom:9px"><svg width="116" height="54" viewBox="0 0 116 54" fill="none"><rect x="7" y="28" width="102" height="20" rx="5" fill="#8E44AD"/><path d="M24 28 C28 14 44 9 68 9 C88 9 102 16 106 28Z" fill="#9B59B6"/><path d="M30 27 C34 18 48 13 68 13 C85 13 97 18 102 27Z" fill="rgba(168,238,240,0.65)"/><ellipse cx="11" cy="36" rx="5" ry="4" fill="#F39C12"/><ellipse cx="11" cy="36" rx="3" ry="2.5" fill="#FFFDE7"/><rect x="103" y="31" width="7" height="7" rx="2" fill="#C0392B"/><circle cx="32" cy="48" r="7.5" fill="#17202A"/><circle cx="32" cy="48" r="3.5" fill="#7F8C8D"/><circle cx="84" cy="48" r="7.5" fill="#17202A"/><circle cx="84" cy="48" r="3.5" fill="#7F8C8D"/></svg></div>
+  <div class="car-lane" style="--dur:8s;--delay:0s;bottom:11px"><svg width="96" height="44" viewBox="0 0 96 44" fill="none"><rect x="5" y="24" width="86" height="16" rx="4" fill="#27AE60"/><path d="M22 24 C26 14 38 10 54 10 C68 10 78 14 80 24Z" fill="#2ECC71"/><path d="M26 23 C29 16 40 12 54 12 C66 12 75 16 77 23Z" fill="rgba(168,238,240,0.6)"/><rect x="5" y="28" width="8" height="4" rx="2" fill="#FFF9C4"/><rect x="83" y="27" width="7" height="5" rx="2" fill="#E74C3C"/><circle cx="24" cy="40" r="6" fill="#1A252F"/><circle cx="24" cy="40" r="2.8" fill="#AAB7B8"/><circle cx="72" cy="40" r="6" fill="#1A252F"/><circle cx="72" cy="40" r="2.8" fill="#AAB7B8"/></svg></div>
+  <div class="car-lane" style="--dur:15s;--delay:6s;bottom:8px"><svg width="130" height="58" viewBox="0 0 130 58" fill="none"><rect x="8" y="30" width="114" height="22" rx="6" fill="#E67E22"/><path d="M26 30 C30 14 46 9 76 9 C100 9 114 17 118 30Z" fill="#E8943A"/><rect x="32" y="14" width="24" height="13" rx="3" fill="rgba(168,238,240,0.7)"/><rect x="60" y="14" width="24" height="13" rx="3" fill="rgba(168,238,240,0.7)"/><rect x="88" y="14" width="20" height="13" rx="3" fill="rgba(168,238,240,0.55)"/><ellipse cx="12" cy="40" rx="5" ry="4" fill="#F1C40F"/><ellipse cx="12" cy="40" rx="3" ry="2.5" fill="#FFFFF0"/><rect x="115" y="34" width="8" height="9" rx="2" fill="#C0392B"/><circle cx="36" cy="52" r="8" fill="#1A252F"/><circle cx="36" cy="52" r="4" fill="#7F8C8D"/><circle cx="96" cy="52" r="8" fill="#1A252F"/><circle cx="96" cy="52" r="4" fill="#7F8C8D"/></svg></div>
 </div>
 
 <!-- EXPERIENCE -->
@@ -702,10 +403,7 @@ nav a:hover{color:var(--teal)}
   <h2 class="sec-h reveal" style="margin-bottom:24px">Where I've <em>built things</em></h2>
   <div class="exp-card reveal">
     <div class="exp-top">
-      <div>
-        <div class="exp-role">Analyst Programmer</div>
-        <div class="exp-co">Ramco Systems · Chennai, India</div>
-      </div>
+      <div><div class="exp-role">Analyst Programmer</div><div class="exp-co">Ramco Systems · Chennai, India</div></div>
       <span class="exp-date">Aug 2022 — Apr 2023</span>
     </div>
     <ul class="exp-ul">
@@ -718,109 +416,114 @@ nav a:hover{color:var(--teal)}
   </div>
 </section>
 
-<!-- PROJECTS — UNIFORM 2×2 GRID -->
+<!-- PROJECTS — HORIZONTAL CAROUSEL -->
 <section id="projects">
-  <div class="eyebrow inv reveal">Featured Projects</div>
-  <h2 class="sec-h inv reveal" style="margin-bottom:24px">Things I've <em>shipped</em></h2>
+  <div class="proj-section-header">
+    <div class="eyebrow inv reveal">Featured Projects</div>
+    <h2 class="sec-h inv reveal" style="margin-bottom:0">Things I've <em>shipped</em></h2>
+  </div>
 
-  <div class="proj-grid">
+  <div class="proj-track-outer">
+    <div class="proj-track" id="projTrack">
 
-    <!-- ShopEase -->
-    <div class="pcard reveal">
-      <div class="pthumb">
-        <img src="shopease.png" alt="ShopEase E-Commerce">
-        <span class="pyear">2024</span>
-        <div class="plive-badge">● Live</div>
-      </div>
-      <div class="pbody">
-        <div class="ptag">MERN Stack · Full Stack</div>
-        <div class="pname">ShopEase — E-Commerce Platform</div>
-        <p class="pdesc">Full-stack e-commerce with product listing, category filtering, search, and cart. Separate frontend (Vercel) and backend (Render) deployments.</p>
-        <div class="pstack">
-          <span class="ppill">MongoDB</span><span class="ppill">Express</span>
-          <span class="ppill">React</span><span class="ppill">Node.js</span>
-          <span class="ppill">Vercel</span><span class="ppill">Render</span>
+      <!-- ShopEase -->
+      <div class="pcard reveal">
+        <div class="pthumb">
+          <img src="shopease.png" alt="ShopEase">
+          <span class="pyear">2026</span>
         </div>
-        <div class="pbtns">
-          <a href="https://shopease-frontend-eta.vercel.app/" target="_blank" class="pbtn pbtn-live">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-          <a href="https://github.com/Viveka31/shopease-frontend" target="_blank" class="pbtn pbtn-code">Frontend</a>
-          <a href="https://github.com/Viveka31/shopease-backend" target="_blank" class="pbtn pbtn-code">Backend</a>
+        <div class="pbody">
+          <div class="ptag">MERN Stack · Full Stack</div>
+          <div class="pname">ShopEase</div>
+          <p class="pdesc">Full-stack e-commerce with product listing, category filtering, search, and cart. Separate frontend (Vercel) and backend (Render) deployments.</p>
+          <div class="pstack"><span class="ppill">MongoDB</span><span class="ppill">Express</span><span class="ppill">React</span><span class="ppill">Node.js</span><span class="ppill">Vercel</span><span class="ppill">Render</span></div>
+          <div class="pbtns">
+            <a href="https://shopease-frontend-eta.vercel.app/" target="_blank" class="pbtn pbtn-live">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Live Demo
+            </a>
+            <a href="https://github.com/Viveka31/shopease-frontend" target="_blank" class="pbtn pbtn-code">Frontend</a>
+            <a href="https://github.com/Viveka31/shopease-backend" target="_blank" class="pbtn pbtn-code">Backend</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Invoice Builder -->
-    <div class="pcard reveal" style="transition-delay:.1s">
-      <div class="pthumb">
-        <img src="invoice.png" alt="Invoice Builder Pro">
-        <span class="pyear">2024</span>
-        <div class="plive-badge">● Live</div>
-      </div>
-      <div class="pbody">
-        <div class="ptag">React · Frontend</div>
-        <div class="pname">Invoice Builder Pro</div>
-        <p class="pdesc">Browser-based invoice generator with dynamic line items, real-time GST calculation, and one-click PDF download. Fully client-side, no backend needed.</p>
-        <div class="pstack">
-          <span class="ppill">React</span><span class="ppill">CSS3</span>
-          <span class="ppill">PDF Export</span><span class="ppill">Netlify</span>
+      <!-- Invoice Builder -->
+      <div class="pcard reveal" style="transition-delay:.1s">
+        <div class="pthumb">
+          <img src="invoice.png" alt="Invoice Builder Pro">
+          <span class="pyear">2026</span>
         </div>
-        <div class="pbtns">
-          <a href="https://fabulous-blancmange-6cd429.netlify.app/" target="_blank" class="pbtn pbtn-live">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-          <a href="https://github.com/Viveka31/invoice-builder" target="_blank" class="pbtn pbtn-code">Code</a>
+        <div class="pbody">
+          <div class="ptag">React · Frontend</div>
+          <div class="pname">Invoice Builder Pro</div>
+          <p class="pdesc">Browser-based invoice generator with dynamic line items, real-time GST calculation, and one-click PDF download. Fully client-side, no backend needed.</p>
+          <div class="pstack"><span class="ppill">React</span><span class="ppill">CSS3</span><span class="ppill">PDF Export</span><span class="ppill">Netlify</span></div>
+          <div class="pbtns">
+            <a href="https://fabulous-blancmange-6cd429.netlify.app/" target="_blank" class="pbtn pbtn-live">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Live Demo
+            </a>
+            <a href="https://github.com/Viveka31/invoice-builder" target="_blank" class="pbtn pbtn-code">Code</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Kanban Board -->
-    <div class="pcard reveal" style="transition-delay:.2s">
-      <div class="pthumb">
-        <img src="kanban.png" alt="Kanban Board">
-        <span class="pyear">2024</span>
-        <div class="plive-badge">● Live</div>
-      </div>
-      <div class="pbody">
-        <div class="ptag">Vanilla JS · Frontend</div>
-        <div class="pname">Kanban Board</div>
-        <p class="pdesc">Task management board with To Do / In Progress / Done columns, priority levels, and due dates. Pure vanilla JavaScript — zero dependencies.</p>
-        <div class="pstack">
-          <span class="ppill">JavaScript</span><span class="ppill">HTML5</span>
-          <span class="ppill">CSS3</span><span class="ppill">Netlify</span>
+      <!-- Kanban -->
+      <div class="pcard reveal" style="transition-delay:.2s">
+        <div class="pthumb">
+          <img src="kanban.png" alt="Kanban Board">
+          <span class="pyear">2026</span>
         </div>
-        <div class="pbtns">
-          <a href="https://frabjous-eclair-e620d3.netlify.app/" target="_blank" class="pbtn pbtn-live">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-          <a href="https://github.com/Viveka31/kanbanboard" target="_blank" class="pbtn pbtn-code">Code</a>
+        <div class="pbody">
+          <div class="ptag">Vanilla JS · Frontend</div>
+          <div class="pname">Kanban Board</div>
+          <p class="pdesc">Task management board with To Do / In Progress / Done columns, priority levels, and due dates. Pure vanilla JavaScript — zero dependencies.</p>
+          <div class="pstack"><span class="ppill">JavaScript</span><span class="ppill">HTML5</span><span class="ppill">CSS3</span><span class="ppill">Netlify</span></div>
+          <div class="pbtns">
+            <a href="https://frabjous-eclair-e620d3.netlify.app/" target="_blank" class="pbtn pbtn-live">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Live Demo
+            </a>
+            <a href="https://github.com/Viveka31/kanbanboard" target="_blank" class="pbtn pbtn-code">Code</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Fashion Recommendation -->
-    <div class="pcard reveal" style="transition-delay:.3s">
-      <div class="pthumb">
-        <img src="recommendation_system.png" alt="Fashion Recommendation System">
-        <span class="pyear">2022</span>
-      </div>
-      <div class="pbody">
-        <div class="ptag">Deep Learning · Python</div>
-        <div class="pname">Fashion Recommendation System</div>
-        <p class="pdesc">Deep learning model recommending visually similar fashion items from a user-uploaded image using feature extraction and cosine similarity embeddings.</p>
-        <div class="pstack">
-          <span class="ppill">Python</span><span class="ppill">Deep Learning</span>
-          <span class="ppill">Streamlit</span><span class="ppill">Computer Vision</span>
+      <!-- Fashion Rec -->
+      <div class="pcard reveal" style="transition-delay:.3s">
+        <div class="pthumb">
+          <img src="recommendation_system.png" alt="Fashion Recommendation">
+          <span class="pyear">2022</span>
+        </div>
+        <div class="pbody">
+          <div class="ptag">Deep Learning · Python</div>
+          <div class="pname">Fashion Recommendation System</div>
+          <p class="pdesc">Deep learning model recommending visually similar fashion items from a user-uploaded image using feature extraction and cosine similarity embeddings.</p>
+          <div class="pstack"><span class="ppill">Python</span><span class="ppill">Deep Learning</span><span class="ppill">Streamlit</span><span class="ppill">Computer Vision</span></div>
         </div>
       </div>
-    </div>
 
+    </div><!-- end track -->
+  </div>
+
+  <!-- nav dots + arrows -->
+  <div class="proj-arrows">
+    <button class="proj-arrow" id="projPrev" aria-label="Previous">←</button>
+    <button class="proj-arrow" id="projNext" aria-label="Next">→</button>
+  </div>
+  <div class="proj-dots" id="projDots">
+    <button class="proj-dot active" data-idx="0"></button>
+    <button class="proj-dot" data-idx="1"></button>
+    <button class="proj-dot" data-idx="2"></button>
+    <button class="proj-dot" data-idx="3"></button>
   </div>
 </section>
+
+<!-- ROAD 3 -->
+<div class="road-strip">
+  <div class="road-surface"></div><div class="road-dashes"></div><div class="road-kerb"></div>
+  <div class="car-lane" style="--dur:10s;--delay:0s;bottom:10px"><svg width="110" height="52" viewBox="0 0 110 52" fill="none"><rect x="8" y="26" width="94" height="20" rx="5" fill="#C0392B"/><path d="M28 26 C32 14 46 10 64 10 C78 10 88 16 92 26Z" fill="#E74C3C"/><path d="M34 25 C37 17 50 13 64 13 C76 13 84 18 87 25Z" fill="rgba(168,238,240,0.7)"/><ellipse cx="12" cy="34" rx="5" ry="4" fill="#F39C12"/><ellipse cx="12" cy="34" rx="3" ry="2.5" fill="#FFF3C0"/><rect x="96" y="30" width="7" height="7" rx="2" fill="#E74C3C"/><circle cx="30" cy="46" r="7" fill="#2C3E50"/><circle cx="30" cy="46" r="3.5" fill="#95A5A6"/><circle cx="80" cy="46" r="7" fill="#2C3E50"/><circle cx="80" cy="46" r="3.5" fill="#95A5A6"/></svg></div>
+  <div class="car-lane" style="--dur:7s;--delay:2s;bottom:12px"><svg width="100" height="46" viewBox="0 0 100 46" fill="none"><rect x="6" y="26" width="88" height="16" rx="4" fill="#F39C12"/><path d="M26 26 C30 16 42 12 58 12 C70 12 80 17 82 26Z" fill="#F1C40F"/><path d="M30 25 C33 18 44 14 58 14 C69 14 77 18 80 25Z" fill="rgba(168,238,240,0.65)"/><rect x="6" y="30" width="9" height="4" rx="2" fill="#FFF9C4"/><rect x="86" y="28" width="8" height="5" rx="2" fill="#E74C3C"/><circle cx="26" cy="42" r="6.5" fill="#2C3E50"/><circle cx="26" cy="42" r="3" fill="#BDC3C7"/><circle cx="74" cy="42" r="6.5" fill="#2C3E50"/><circle cx="74" cy="42" r="3" fill="#BDC3C7"/></svg></div>
+  <div class="car-lane" style="--dur:13s;--delay:5s;bottom:8px"><svg width="124" height="56" viewBox="0 0 124 56" fill="none"><rect x="6" y="28" width="112" height="22" rx="5" fill="#2980B9"/><path d="M22 28 C26 12 42 8 72 8 C96 8 108 16 110 28Z" fill="#3498DB"/><rect x="28" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/><rect x="54" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/><rect x="80" y="13" width="20" height="13" rx="3" fill="rgba(168,238,240,0.55)"/><ellipse cx="10" cy="37" rx="5" ry="4" fill="#F39C12"/><ellipse cx="10" cy="37" rx="3" ry="2.5" fill="#FFFDE7"/><rect x="109" y="32" width="8" height="8" rx="2" fill="#C0392B"/><circle cx="32" cy="50" r="8" fill="#1A252F"/><circle cx="32" cy="50" r="4" fill="#7F8C8D"/><circle cx="90" cy="50" r="8" fill="#1A252F"/><circle cx="90" cy="50" r="4" fill="#7F8C8D"/><rect x="30" y="7" width="60" height="3" rx="1.5" fill="#1A6FA8"/></svg></div>
+</div>
 
 <!-- CERTIFICATIONS -->
 <section id="certifications">
@@ -833,10 +536,7 @@ nav a:hover{color:var(--teal)}
     <a href="https://drive.google.com/file/d/1fOA0UyiHlhMATg_r5AT0dslER2BLOB2d/view" target="_blank" class="ccard reveal"><div class="cicon">🔥</div><div class="cname">JavaScript Advanced</div><div class="cby">GUVI</div></a>
     <a href="https://drive.google.com/file/d/1YhWhq7MtPBErjjJ_6pm-BEZbWzrfUJWC/view" target="_blank" class="ccard reveal"><div class="cicon">🎨</div><div class="cname">HTML / CSS / Tailwind</div><div class="cby">GUVI</div></a>
     <a href="https://drive.google.com/file/d/1r9y3vveiG-PXwASb0rfc2-bkwVLm52Hi/view" target="_blank" class="ccard reveal"><div class="cicon">🗄️</div><div class="cname">Database</div><div class="cby">GUVI</div></a>
-    <a href="https://drive.google.com/file/d/1VQbRUtApe-G-iLdvS5IOsI8wh5B-YEFC/view" target="_blank" class="ccard reveal" style="grid-column:span 2;flex-direction:row;align-items:center;gap:14px">
-      <div class="cicon">🏆</div>
-      <div><div class="cname">Full Stack Development</div><div class="cby">GUVI · Complete Program</div></div>
-    </a>
+    <a href="https://drive.google.com/file/d/1VQbRUtApe-G-iLdvS5IOsI8wh5B-YEFC/view" target="_blank" class="ccard reveal" style="grid-column:span 2;flex-direction:row;align-items:center;gap:14px"><div class="cicon">🏆</div><div><div class="cname">Full Stack Development</div><div class="cby">GUVI · Complete Program</div></div></a>
   </div>
   <div class="eyebrow" style="margin-bottom:12px">Hackathon & Events</div>
   <div class="ach-grid">
@@ -847,71 +547,16 @@ nav a:hover{color:var(--teal)}
   </div>
 </section>
 
-<!-- ══ ROAD STRIP 3 ══ -->
-<div class="road-strip">
-  <div class="road-surface"></div>
-  <div class="road-dashes"></div>
-  <div class="road-kerb"></div>
-  <div class="car-lane" style="--dur:10s;--delay:0s;bottom:10px">
-    <svg width="110" height="52" viewBox="0 0 110 52" fill="none">
-      <rect x="8" y="26" width="94" height="20" rx="5" fill="#C0392B"/>
-      <path d="M28 26 C32 14 46 10 64 10 C78 10 88 16 92 26Z" fill="#E74C3C"/>
-      <path d="M34 25 C37 17 50 13 64 13 C76 13 84 18 87 25Z" fill="rgba(168,238,240,0.7)"/>
-      <ellipse cx="12" cy="34" rx="5" ry="4" fill="#F39C12"/><ellipse cx="12" cy="34" rx="3" ry="2.5" fill="#FFF3C0"/>
-      <rect x="96" y="30" width="7" height="7" rx="2" fill="#E74C3C"/>
-      <circle cx="30" cy="46" r="7" fill="#2C3E50"/><circle cx="30" cy="46" r="3.5" fill="#95A5A6"/>
-      <circle cx="80" cy="46" r="7" fill="#2C3E50"/><circle cx="80" cy="46" r="3.5" fill="#95A5A6"/>
-    </svg>
-  </div>
-  <div class="car-lane" style="--dur:7s;--delay:2s;bottom:12px">
-    <svg width="96" height="44" viewBox="0 0 96 44" fill="none">
-      <rect x="5" y="24" width="86" height="16" rx="4" fill="#F39C12"/>
-      <path d="M22 24 C26 14 38 10 54 10 C68 10 78 14 80 24Z" fill="#F1C40F"/>
-      <path d="M26 23 C29 16 40 12 54 12 C66 12 75 16 77 23Z" fill="rgba(168,238,240,0.65)"/>
-      <rect x="5" y="28" width="8" height="4" rx="2" fill="#FFF9C4"/>
-      <rect x="83" y="27" width="7" height="5" rx="2" fill="#E74C3C"/>
-      <circle cx="24" cy="40" r="6" fill="#1A252F"/><circle cx="24" cy="40" r="2.8" fill="#AAB7B8"/>
-      <circle cx="72" cy="40" r="6" fill="#1A252F"/><circle cx="72" cy="40" r="2.8" fill="#AAB7B8"/>
-    </svg>
-  </div>
-  <div class="car-lane" style="--dur:13s;--delay:5s;bottom:8px">
-    <svg width="124" height="56" viewBox="0 0 124 56" fill="none">
-      <rect x="6" y="28" width="112" height="22" rx="5" fill="#2980B9"/>
-      <path d="M22 28 C26 12 42 8 72 8 C96 8 108 16 110 28Z" fill="#3498DB"/>
-      <rect x="28" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/>
-      <rect x="54" y="13" width="22" height="13" rx="3" fill="rgba(168,238,240,0.7)"/>
-      <rect x="80" y="13" width="20" height="13" rx="3" fill="rgba(168,238,240,0.55)"/>
-      <ellipse cx="10" cy="37" rx="5" ry="4" fill="#F39C12"/><ellipse cx="10" cy="37" rx="3" ry="2.5" fill="#FFFDE7"/>
-      <rect x="109" y="32" width="8" height="8" rx="2" fill="#C0392B"/>
-      <circle cx="32" cy="50" r="8" fill="#1A252F"/><circle cx="32" cy="50" r="4" fill="#7F8C8D"/>
-      <circle cx="90" cy="50" r="8" fill="#1A252F"/><circle cx="90" cy="50" r="4" fill="#7F8C8D"/>
-      <rect x="30" y="7" width="60" height="3" rx="1.5" fill="#1A6FA8"/>
-    </svg>
-  </div>
-</div>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="eyebrow inv reveal">Get in Touch</div>
   <h2 class="sec-h inv reveal">Let's build something <em>together</em></h2>
   <p class="c-desc">Open to full-time roles, freelance projects, and interesting collaborations. Whether you have an opportunity or just want to say hello — reach out!</p>
   <div class="c-links">
-    <a href="https://mail.google.com/mail/?view=cm&to=viveka310820@gmail.com" target="_blank" class="c-lnk">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      viveka310820@gmail.com
-    </a>
-    <a href="https://linkedin.com/in/viveka-k-97340332a" target="_blank" class="c-lnk">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
-    </a>
-    <a href="https://github.com/Viveka31" target="_blank" class="c-lnk">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-      GitHub
-    </a>
-    <a href="tel:+919361384950" class="c-lnk">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      +91 93613 84950
-    </a>
+    <a href="https://mail.google.com/mail/?view=cm&to=viveka310820@gmail.com" target="_blank" class="c-lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>viveka310820@gmail.com</a>
+    <a href="https://linkedin.com/in/viveka-k-97340332a" target="_blank" class="c-lnk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    <a href="https://github.com/Viveka31" target="_blank" class="c-lnk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>GitHub</a>
+    <a href="tel:+919361384950" class="c-lnk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.08 6.08l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 93613 84950</a>
   </div>
   <div class="footer">
     <span>Viveka K · Chennai, India · 2026</span>
@@ -924,9 +569,7 @@ nav a:hover{color:var(--teal)}
   // Scroll reveal
   const revEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-    });
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)} });
   }, {threshold:.08});
   revEls.forEach(el => io.observe(el));
 
@@ -934,6 +577,41 @@ nav a:hover{color:var(--teal)}
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
     nav.style.padding = window.scrollY > 50 ? '10px 64px' : '16px 64px';
+  });
+
+  // ── PROJECT CAROUSEL ──────────────────────────────
+  const track   = document.getElementById('projTrack');
+  const dots    = document.querySelectorAll('.proj-dot');
+  const btnPrev = document.getElementById('projPrev');
+  const btnNext = document.getElementById('projNext');
+  const CARD_W  = 400 + 24; // card width + gap
+  let current   = 0;
+  const total   = dots.length;
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, total - 1));
+    track.scrollTo({ left: current * CARD_W, behavior: 'smooth' });
+    dots.forEach((d,i) => d.classList.toggle('active', i === current));
+  }
+
+  btnNext.addEventListener('click', () => goTo(current + 1));
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+
+  // sync dot on manual scroll
+  track.addEventListener('scroll', () => {
+    const idx = Math.round(track.scrollLeft / CARD_W);
+    if(idx !== current) { current = idx; dots.forEach((d,i)=>d.classList.toggle('active',i===current)); }
+  });
+
+  // drag to scroll
+  let isDown=false, startX=0, startScroll=0;
+  track.addEventListener('mousedown', e => { isDown=true; startX=e.pageX-track.offsetLeft; startScroll=track.scrollLeft; });
+  track.addEventListener('mouseleave', ()=>isDown=false);
+  track.addEventListener('mouseup', ()=>isDown=false);
+  track.addEventListener('mousemove', e => {
+    if(!isDown)return; e.preventDefault();
+    track.scrollLeft = startScroll - (e.pageX - track.offsetLeft - startX);
   });
 </script>
 </body>
